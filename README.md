@@ -1,51 +1,45 @@
-# 📊 Bellabeat Smart Device Usage – SQL & R Analysis
+# 📊 Bellabeat Smart Device Usage – BigQuery & Tableau Analysis
 
 ## 🧩 Overview  
-This project analyzes smart device usage data to uncover patterns in activity and sleep among users, inspired by Bellabeat’s wellness tracking products. By leveraging SQL for data management and R for statistical analysis and visualization, we generate actionable insights to support product development and marketing strategies.
+This project explores smart device usage data to uncover trends in user activity and sleep, inspired by Bellabeat’s wellness products. Using Google BigQuery for scalable SQL analysis and Tableau for interactive dashboards, the goal is to surface insights that can support data-driven product and marketing decisions.
 
 ## 🗃️ Dataset  
 - **Source**: [FitBit Fitness Tracker Data on Kaggle](https://www.kaggle.com/datasets/arashnic/fitbit)  
 - **Files Used**:  
-  - `daily_activity.csv` – activity, steps, calories, sedentary minutes  
+  - `daily_activity.csv` – steps, calories, sedentary minutes  
   - `sleep_day.csv` – sleep duration and time in bed  
 - **Limitations**:  
   - Small sample size (30 users)  
   - Primarily female demographic  
-  - Incomplete sleep tracking for some users  
+  - Incomplete sleep tracking coverage  
 
 ## 🛠️ Tools Used  
-- **SQL** (SQLite) for data loading, filtering, and joins  
-- **R** (tidyverse, ggplot2, corrplot) for analysis and visualization  
+- **Google BigQuery** – for querying and joining large structured datasets  
+- **Tableau** – for building interactive dashboards and data storytelling  
 
 ## ❓ Business Questions  
-- Is there a relationship between physical activity and sleep duration?  
-- How sedentary are users despite their activity levels?  
-- What behavioral patterns can inform product or app engagement strategies?  
+- What’s the relationship between physical activity and sleep?  
+- How much time do users spend sedentary, and how does this vary by day?  
+- What insights can drive product features or marketing campaigns?  
 
 ## 🔍 Methodology  
-### SQL Workflow  
-- Created tables for activity and sleep data  
-- Joined datasets on user ID and date  
-- Filtered and exported merged results for R-based analysis  
+### BigQuery Workflow  
+- Uploaded CSVs to Google Cloud Storage and imported into BigQuery  
+- Wrote SQL to clean and join activity and sleep datasets on user ID and date  
+- Aggregated daily metrics and exported summary views for Tableau  
 
-### R Workflow  
-- Imported SQL-joined dataset using `DBI`  
-- Conducted exploratory data analysis (EDA)  
-- Built scatter plots and correlation matrices  
-- Summarized trends in physical and sleep behavior  
+### Tableau Workflow  
+- Connected Tableau to BigQuery export  
+- Built dashboards including:
+  - Steps vs Sleep scatter plots  
+  - Average activity by weekday  
+  - Sedentary time distribution  
+  - Correlation heatmap (using calculated fields)  
 
 ## 📈 Key Findings  
-- Weak-to-moderate positive correlation between steps taken and minutes asleep  
-- Most users are still sedentary for long periods despite moderate daily steps  
-- Sleep data was only consistently recorded for about 25% of total days  
+- Moderate correlation between daily step count and total minutes asleep  
+- Sedentary behavior remains high, even on active days  
+- Sleep data logging is inconsistent across users  
 
-![Steps vs Sleep](visuals/steps_vs_sleep.png)  
-*Scatter plot showing relationship between steps and sleep duration*
-
-![Correlation Plot](visuals/corr_plot.png)  
-*Correlation matrix between activity, calories, and sleep metrics*
-
-## 📌 Recommendations  
-- Introduce sleep tracking reminders or gamification to boost consistency  
-- Promote short, high-impact activities for sedentary users  
-- Emphasize recovery and sleep features in marketing to health-conscious users  
+![Example Dashboard](visuals/tableau_dashboard_preview.png)  
+*Example dashboard showing step vs sleep relationships and daily patterns*
